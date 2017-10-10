@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require ('method-override');
 //const articlesRoute = require('./routes/articles.js');
 const productsRoute = require('./routes/products.js');
-const PORT = process.env.PORT|| 8080;
+
 const app = express();
 
 //TO MAKE SURE THAT IT RECOGNIZES THE HBS EXT
@@ -19,13 +19,25 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) =>{
-  res.render ('home');
+/*  res.render ('home');*/
+  res.send('smoke test');
 });
+
+
+/*app.get('/products', (req, res) => {
+  res.json(products);
+});*/
+
+/*app.post('/products', (req, res) => {
+  const data = req.body;
+  data.id = ++productIds;
+  products.push(data);
+  res.json(data);
+});
+*/
 
 //routers
 //app.use('/articles', articleRoute);
 app.use('/products', productsRoute);
 
-app.listen(PORT, () =>{
-  console.log('Sever is listening to ', PORT);
-});
+module.exports = app;

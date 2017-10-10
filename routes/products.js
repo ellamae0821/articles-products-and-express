@@ -24,7 +24,8 @@ const products = new Products();
 */
 
 router.get('/', (req, res) => {
-  res.render('index', {products : products.getAllProducts()});
+//  res.render('index', {products : products.getAllProducts()});
+  res.json(products);
 });
 
 
@@ -37,12 +38,15 @@ router.get('/', (req, res) => {
     res.render('/products/new');
   }
   console.log(Products);
-});*/
+});
+*/
 
-router.post('/', (req, res) => {
-  products.addProduct(req.body);
-  res.render('/products', { products: products.getAllProducts()});
-  res.json({"success": true });
+
+router.post('/products', (req, res) => {
+  const data = req.body;
+  data.id = ++productIds;
+  products.push(data);
+  res.json(data);
 });
 
 
