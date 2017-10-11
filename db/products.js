@@ -12,7 +12,7 @@ class Products {
 
   addProduct(newProduct){
     for(var i=0; i<this._collection.length; i++){
-      if(this._collection[i].name === newProduct.name){
+      if(this._collection[i].Name === newProduct.Name){
         throw new Error ('Product name already exists');
         }
       }
@@ -22,16 +22,16 @@ class Products {
     return true;
   }
 
-/*
-  getProductName(getId){
+
+  getProductbyId(getId){
     for(let i=0; i<this._collection.length; i++){
       if(this._collection[i].id === getId){
-        console.log(this._collection[i].id);
-        return this._collection.name;
+        console.log(this._collection[i]);
+        return this._collection;
       }
     }
   }
-
+/*
   temp(x){
     for(let i=0; i<this._collection.length; i++){
       if(x.body.name === this._collection[i].name){

@@ -1,12 +1,23 @@
 <h2>Edit</h2>
 
-<form action="/product/{{id}}" method="post" name="_delete" value="PUT">
+<form action="/product/{{id}}/edit?_method=PUT" method="post" name="_delete" value="PUT">
   <label for="product">Edit Product:</label><br>
   <input type="text" id="name" name="EditMe"placeholder="update type of product">
-<br>
-<input type="text" id="price" placeholder="update price">
-<br>
-<input type="text" id="inventory" placeholder="update inventory">
-<br>
-<input type="submit" value="submit">
+  <br>
+  <input type="text" id="price" placeholder="update price">
+  <br>
+  <input type="text" id="inventory" placeholder="update inventory">
+  <br>
+  <input type="submit" value="submit">
 </form>
+
+
+
+
+{{!--
+let locals = {
+  id : 'weqeqweqwe'
+  name: 'Ed'
+}
+res.render('welcome' , locals)
+--}}

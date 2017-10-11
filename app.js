@@ -8,6 +8,7 @@ const productsRoute = require('./routes/products.js');
 const PORT = process.env.PORT|| 8080;
 const app = express();
 
+
 //TO MAKE SURE THAT IT RECOGNIZES THE HBS EXT
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
@@ -18,18 +19,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
 
-app.use(methodOverride((req,res) => {
-  if (req.body && typeof req.body === 'object' && '_method' in req.body){
-    var method = req.body._method;
-    delete req.body._method;
-    return method;
-  }
-}));
-
 app.use(express.static('public'));
 
 app.get('/', (req, res) =>{
-  res.render ('home');
+  res.render ('index');
 });
 
 //routers

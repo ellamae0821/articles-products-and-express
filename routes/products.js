@@ -6,23 +6,52 @@ const exphbs = require('express-handlebars');
 const Products = require('../db/products.js');
 const products = new Products();
 
-
+//////////////// GET ALL PRODUCTS \\\\\\\\\\\\\\\\\\
 
 router.get('/', (req, res) => {
-  res.render('partials/products', {products : products.getAllProducts()});
+  let productsObj = {
+    products: products.getAllProducts()
+  };
+  res.render('partials/products', productsObj);
   //res.end
 });
 
 
+//////////////// POST A NEW PRODUCT \\\\\\\\\\\\\\\\\\
+
 router.post('/', (req, res) => {
   if(products.addProduct(req.body)){
-    res.redirect('/products');
-    res.end();
+    let productsObj = {
+      products: products.getAllProducts()
+    };
+    res.render('partials/products', productsObj);
   }else{
-    res.redirect('/products/new');
-    res.end();// need to create a "new" route notrender, should be redirect
+    res.render('product_new', productsObj);
+// need to create a "new" route notrender, should be redirect
   }
 });
+
+router.get('/new', (req, res) => {
+  res.render('product_new');
+});
+
+//////////////// GET A PRODUCT BY ID \\\\\\\\\\\\\\\\\\
+
+router.get('/:id', (req, res) =>{
+  let productId = parseInt (req.params.id);
+  let productsObj = {products: products.getProductbyId(productId)};
+  res.render('partials/product', productsObj);
+});
+/*
+router.get('/:id', (req, res) => {
+let productId = parseInt(req.params.id);
+if(!products.getProductById(productId)){
+res.redirect(404, '/products');
+}else{
+let locals = {product : products.getProductById(productId)};
+res.render('./products/product', locals);
+}
+});*/
 
 
 
@@ -37,10 +66,7 @@ router.post('/', (req, res) => {
   res.end()
 });
 */
-router.get('/:id', (req, res) =>{
-  let productId = parseInt (req.params.id);
-  res.render('partials/editproduct', productId);
-});
+
 
 router.put('/:id', (req, res) => {
   let productId = parseInt (req.params.id);
