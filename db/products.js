@@ -2,52 +2,58 @@
 
 class Products {
   constructor(){
-    this.id = 0;
+    this.id = 10001;
     this._collection = [];
   }
 
   getAllProducts(){
     return this._collection;
   }
-/*
-  addProduct (newProduct){
+
+  addProduct(newProduct){
+    for(var i=0; i<this._collection.length; i++){
+      if(this._collection[i].name === newProduct.name){
+        throw new Error ('Product name already exists');
+        }
+      }
     this._collection.push(newProduct);
     newProduct.id = this.id;
     this.id++;
-    console.log('_collection :', this._collection);
-    return true; // if true = success else...
-  }
-*/
-  addProduct(newProduct){
-    if (getDuplicate(newProduct.name)){
-      this._collection.push(newProduct);
-      newProduct.id = this.id;
-      this.id++;
-      return true;
-    }else{
-      return false;
-    }
+    return true;
   }
 
 
-  getDuplicate(productName){
-    for (let i=0; i<this._collection.length; i++){
-      if (this._collection[i].name === productName) {
-        return false;
-      }
-    }
-  }
-
-  getProductId(getId){
+  getProductName(getId){
     for(let i=0; i<this._collection.length; i++){
       if(this._collection[i].id === getId){
-        return products[i].id;
+        console.log(this._collection[i].id);
+        return this._collection.name;
       }
     }
   }
 
-  editProduct(id, property, value){
+  temp(x){
+    for(let i=0; i<this._collection.length; i++){
+      if(x.body.name === this._collection[i].name){
+        return this._collection[i];
 
+      }
+    }
+  }
+
+/*  findProduct (reqUrl){
+    return this._collection.id === reqUrl;
+  }*/
+/*
+    getProductName(reqUrl){
+    for(let i=0; i<this._collection.length; i++){
+      if(this._collection[i].id === reqUrl){
+        return this.collection[i].getId;
+      }
+    }
+  }
+*/
+  editProduct(id, property, value){
   }
 
   deleteProduct(getId){
@@ -59,5 +65,7 @@ class Products {
   }
 
 }
+
+
 
 module.exports = Products;
