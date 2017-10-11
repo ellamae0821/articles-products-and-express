@@ -25,17 +25,6 @@ router.post('/', (req, res) => {
 });
 
 
-/*router.post('/', (req, res) => {
-  console.log(req.body);
-  if (req.body === req.body) {
-    Products.addProduct(req.body);
-    console.log(req.body);
-    res.send(hbs);
-    console.log('Waaaaat?');
-  }
-});
-*/
-
 
 /*router.put('/:id',  (req, res) => {
   let requestId = parseInt (req.params.id);
@@ -48,24 +37,33 @@ router.post('/', (req, res) => {
   res.end()
 });
 */
+router.get('/:id', (req, res) =>{
+  let productId = parseInt (req.params.id);
+  res.render('partials/editproduct', productId);
+});
 
 router.put('/:id', (req, res) => {
- // let requestId = parseInt (req.params.id);
-  if(products.temp(req)){
+  let productId = parseInt (req.params.id);
+/*  if(products.temp(req)){
     res.redirect('/products/:id');
     res.end();
   }else{
-    res.redirect('products/new');
-  }
-
+    res.redirect(200, 'products/new');
+  }*/
+//  const productId = {id: Number(req.params.id)};
+  res.render('partials/editproduct', productId);
 
 });
 
 
 
 router.delete('/:id', (req, res) => {
-  let requestId = parseInt (req.params.id);
-
+  console.log(req.body);
+  if (products.checkId(req.body) && products.removeProductById(req.params.id.slice(1))) {
+    res.redirect('/products');
+    } else {
+    res.redirect(`/products/${req.path.slice(1)}`);
+  }
 });
 
 

@@ -22,7 +22,7 @@ class Products {
     return true;
   }
 
-
+/*
   getProductName(getId){
     for(let i=0; i<this._collection.length; i++){
       if(this._collection[i].id === getId){
@@ -39,7 +39,38 @@ class Products {
 
       }
     }
+  }*/
+/*
+  app.put('/buzzword', (req, res) => {
+  for (let i=0; i< buzzWordsArray.length; i++){
+    if(req.body.buzzWord === buzzWordsArray[i].buzzWord){
+      console.log('buzzWordsArray[i]: ',buzzWordsArray[i].buzzWord);
+      buzzWordsArray[i].heard = req.body.heard;
+      totalScore += buzzWordsArray[i].points;
+      res.send( `Yeay! Word has been heard \n Total Score: ${totalScore}` );*/
+
+  checkId (reqBody){
+    if(reqBody.hasOwnProperty('id')){
+      return true;
+    }else{
+      return false;
+    }
   }
+
+
+
+  removeProductById (id){
+    for(let i=0; i<this._collection.length; i++){
+      if(this._collection[i].id === id){
+        this._collection.splice(this._collection.indexOf(this._collection[i], 1));
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+
 
 /*  findProduct (reqUrl){
     return this._collection.id === reqUrl;
