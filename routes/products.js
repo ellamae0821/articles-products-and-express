@@ -1,7 +1,7 @@
 //jshint esversion:6
 const express = require('express');
 const router = express.Router();
-const exphbs = require('express-handlebars');
+
 
 const Products = require('../db/products.js');
 const products = new Products();
@@ -26,33 +26,27 @@ router.post('/', (req, res) => {
     };
     res.render('partials/products', productsObj);
   }else{
-    res.render('product_new', productsObj);
+    res.render('partials/product_new', productsObj);
 // need to create a "new" route notrender, should be redirect
   }
 });
 
 router.get('/new', (req, res) => {
-  res.render('product_new');
+  res.render('partials/product_new');
 });
 
+/*router.get('/', (req, res) => {
+  res.render('product_new');
+});*/
 //////////////// GET A PRODUCT BY ID \\\\\\\\\\\\\\\\\\
 
 router.get('/:id', (req, res) =>{
   let productId = parseInt (req.params.id);
-  let productsObj = {products: products.getProductbyId(productId)};
+  let productsObj = {products: products.getProductById(productId)};
   res.render('partials/product', productsObj);
 });
-/*
-router.get('/:id', (req, res) => {
-let productId = parseInt(req.params.id);
-if(!products.getProductById(productId)){
-res.redirect(404, '/products');
-}else{
-let locals = {product : products.getProductById(productId)};
-res.render('./products/product', locals);
-}
-});*/
 
+//////////////// EDIT A PRODUCT  \\\\\\\\\\\\\\\\\\
 
 
 /*router.put('/:id',  (req, res) => {
@@ -68,19 +62,26 @@ res.render('./products/product', locals);
 */
 
 
-router.put('/:id', (req, res) => {
-  let productId = parseInt (req.params.id);
-/*  if(products.temp(req)){
-    res.redirect('/products/:id');
-    res.end();
-  }else{
-    res.redirect(200, 'products/new');
-  }*/
-//  const productId = {id: Number(req.params.id)};
-  res.render('partials/editproduct', productId);
-
+router.put('/:id', function(req, res){
+  products.updateProduct(req.params.id*1, req.body);
+  //product.name = req.body.name;
+  res.redirect('/products');
 });
 
+router.get('/:id/edit', function(req, res){
+  products.updateProduct(req.params.id*1, req.body);
+  //product.name = req.body.name;
+  res.render('partials/editproduct');
+});
+
+/*router.put('/:id', (req, res) => {
+  let productId = parseInt (req.params.id);
+  let editThis = products.editProduct(productId, req.body);
+  console.log(editThis);
+  res.redirect('partials/');
+
+});
+*/
 
 
 router.delete('/:id', (req, res) => {

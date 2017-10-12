@@ -1,12 +1,21 @@
-<h2>Edit</h2>
+<h2>Edit This Product</h2>
 
-<form action="/product/{{id}}/edit?_method=PUT" method="post" name="_delete" value="PUT">
-  <label for="product">Edit Product:</label><br>
-  <input type="text" id="name" name="EditMe"placeholder="update type of product">
+<em>Product ID: {{this.id}}</em>
+<ul>
+  <li> Name: {{this.Name}}</li>
+  <li> Price: {{this.Price}}</li>
+  <li> Inventory: {{this.Inventory}}</li>
+
+</ul>
+
+
+
+<form action="/product/{{this.id}}/edit?_method=PUT" method="post" name="_delete" value="PUT">
+  Name: <input type="text" id="name" name="EditMe"placeholder="update name of product">
   <br>
-  <input type="text" id="price" placeholder="update price">
+  Price: <input type="text" id="price" placeholder="update price">
   <br>
-  <input type="text" id="inventory" placeholder="update inventory">
+  Inventory: <input type="text" id="inventory" placeholder="update inventory">
   <br>
   <input type="submit" value="submit">
 </form>
@@ -14,10 +23,3 @@
 
 
 
-{{!--
-let locals = {
-  id : 'weqeqweqwe'
-  name: 'Ed'
-}
-res.render('welcome' , locals)
---}}

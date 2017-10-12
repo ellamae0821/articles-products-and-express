@@ -23,31 +23,16 @@ class Products {
   }
 
 
-  getProductbyId(getId){
-    for(let i=0; i<this._collection.length; i++){
-      if(this._collection[i].id === getId){
-        console.log(this._collection[i]);
-        return this._collection;
+
+
+  getProductById(getId){
+      for(let i=0; i<this._collection.length; i++){
+        if(this._collection[i].id === getId){
+          console.log(this._collection[i]);
+          return this._collection[i];
       }
     }
   }
-/*
-  temp(x){
-    for(let i=0; i<this._collection.length; i++){
-      if(x.body.name === this._collection[i].name){
-        return this._collection[i];
-
-      }
-    }
-  }*/
-/*
-  app.put('/buzzword', (req, res) => {
-  for (let i=0; i< buzzWordsArray.length; i++){
-    if(req.body.buzzWord === buzzWordsArray[i].buzzWord){
-      console.log('buzzWordsArray[i]: ',buzzWordsArray[i].buzzWord);
-      buzzWordsArray[i].heard = req.body.heard;
-      totalScore += buzzWordsArray[i].points;
-      res.send( `Yeay! Word has been heard \n Total Score: ${totalScore}` );*/
 
   checkId (reqBody){
     if(reqBody.hasOwnProperty('id')){
@@ -84,8 +69,14 @@ class Products {
     }
   }
 */
-  editProduct(id, property, value){
+  updateProduct(id, data){
+    let selectedProd = this.getAllProducts(id);
+    selectedProd.Name = data.Name;
+    selectedProd.Price = data.Price;
+    selectedProd.Inventory = data.Inventory;
+//    return selectedProd;
   }
+
 
   deleteProduct(getId){
     for(let i=0; i<this._collection.length; i++){
