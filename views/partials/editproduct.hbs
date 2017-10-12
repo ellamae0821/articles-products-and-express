@@ -1,22 +1,22 @@
-<h2>Edit This Product</h2>
+<h2>Edit Product</h2>
 
-<em>Product ID: {{this.id}}</em>
+{{!-- <em>Product ID: {{this.id}}</em>
 <ul>
   <li> Name: {{this.Name}}</li>
   <li> Price: {{this.Price}}</li>
   <li> Inventory: {{this.Inventory}}</li>
-
 </ul>
 
+PRODUCT: {{>product}} --}}
 
 
-<form action="/product/{{this.id}}/edit?_method=PUT" method="post" name="_delete" value="PUT">
-  Name: <input type="text" id="name" name="EditMe"placeholder="update name of product">
-  <br>
-  Price: <input type="text" id="price" placeholder="update price">
-  <br>
-  Inventory: <input type="text" id="inventory" placeholder="update inventory">
-  <br>
+Name: <input type="text" id="name" name="EditMe"placeholder="update name of product">
+<br>
+Price: <input type="text" id="price" placeholder="update price">
+<br>
+Inventory: <input type="text" id="inventory" placeholder="update inventory">
+<br>
+<form action="/product/{{product.id}}/edit?_method=PUT" method="POST" name="_delete" value="PUT">
   <input type="submit" value="submit">
 </form>
 

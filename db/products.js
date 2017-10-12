@@ -19,6 +19,7 @@ class Products {
     this._collection.push(newProduct);
     newProduct.id = this.id;
     this.id++;
+    console.log(this._collection);
     return true;
   }
 
@@ -43,6 +44,7 @@ class Products {
   }
 
 
+/*
 
   removeProductById (id){
     for(let i=0; i<this._collection.length; i++){
@@ -53,7 +55,7 @@ class Products {
     }
     return false;
   }
-
+*/
 
 
 
@@ -74,7 +76,7 @@ class Products {
     selectedProd.Name = data.Name;
     selectedProd.Price = data.Price;
     selectedProd.Inventory = data.Inventory;
-//    return selectedProd;
+    return selectedProd;
   }
 
 

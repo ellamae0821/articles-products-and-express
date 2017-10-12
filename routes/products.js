@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
     products: products.getAllProducts()
   };
   res.render('partials/products', productsObj);
-  //res.end
 });
 
 
@@ -27,7 +26,6 @@ router.post('/', (req, res) => {
     res.render('partials/products', productsObj);
   }else{
     res.render('partials/product_new', productsObj);
-// need to create a "new" route notrender, should be redirect
   }
 });
 
@@ -35,9 +33,7 @@ router.get('/new', (req, res) => {
   res.render('partials/product_new');
 });
 
-/*router.get('/', (req, res) => {
-  res.render('product_new');
-});*/
+
 //////////////// GET A PRODUCT BY ID \\\\\\\\\\\\\\\\\\
 
 router.get('/:id', (req, res) =>{
@@ -62,11 +58,7 @@ router.get('/:id', (req, res) =>{
 */
 
 
-router.put('/:id', function(req, res){
-  products.updateProduct(req.params.id*1, req.body);
-  //product.name = req.body.name;
-  res.redirect('/products');
-});
+
 
 router.get('/:id/edit', function(req, res){
   products.updateProduct(req.params.id*1, req.body);
@@ -74,24 +66,43 @@ router.get('/:id/edit', function(req, res){
   res.render('partials/editproduct');
 });
 
-/*router.put('/:id', (req, res) => {
+router.put('/:id/edit', function(req, res){
+  console.log("putting '/:id/edit'", req.body);
+  products.updateProduct(req.params.id*1, req.body);
+  //product.name = req.body.name;
+  res.redirect('/products');
+});
+/*
+router.put('/:id/edit', (req, res) => {
   let productId = parseInt (req.params.id);
   let editThis = products.editProduct(productId, req.body);
   console.log(editThis);
-  res.redirect('partials/');
+  let productsObj = {products: products.getProductById(productId)};
+  res.render('partials/product', productsObj);
+});*/
 
-});
-*/
 
 
-router.delete('/:id', (req, res) => {
+/*router.delete('/:id', (req, res) => {
   console.log(req.body);
   if (products.checkId(req.body) && products.removeProductById(req.params.id.slice(1))) {
     res.redirect('/products');
     } else {
     res.redirect(`/products/${req.path.slice(1)}`);
   }
+});*/
+/*
+router.delete('/:id', function(req, res){
+  product.deleteProduct(req.params.id*1);
+  let productsObj = {products: products.getProductById(productId)};
+  res.render('partials/product', productsObj);
+});*/
+
+router.delete('/:id', (req, res) => {
+  let productId = parseInt(req.params.id);
+  products.deleteProduct(productId);
+  res.redirect(200, '/products');
 });
 
-
 module.exports = router;
+

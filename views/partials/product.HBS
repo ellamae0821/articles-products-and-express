@@ -1,7 +1,9 @@
 
 <div class = "itemlist">
 <h3>Selected Item</h3>
+
 <em>Product ID: {{products.id}}</em>
+
 <ul>
   <li> Name: {{products.Name}}</li>
   <li> Price: {{products.Price}}</li>
@@ -15,7 +17,7 @@
 <div class ="btn">
   <a href= "/partials/{{this.id}}/editproduct">
   <button class="submit-btn" type="submit">Edit Product</button>
-  </a>
+
 
   <form method="DELETE" action="/products">
   <button class="submit-btn" type="submit">Delete</button>

@@ -17,15 +17,11 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
-
-
 app.use(express.static('public'));
-
 app.get('/', (req, res) =>{
   res.render ('index');
 });
 
-//routers
 //app.use('/articles', articleRoute);
 app.use('/products', productsRoute);
 
