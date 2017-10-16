@@ -61,25 +61,28 @@ router.get('/:id', (req, res) =>{
 
 
 router.get('/:id/edit', function(req, res){
-  products.updateProduct(req.params.id*1, req.body);
-  //product.name = req.body.name;
+  let productId = parseInt (req.params.id);
   res.render('partials/editproduct');
+    console.log("Getting /:id/edit ", products.getProductById(productId));
 });
 
-router.put('/:id/edit', function(req, res){
+/*router.put('/:id/edit', function(req, res){
   console.log("putting '/:id/edit'", req.body);
   products.updateProduct(req.params.id*1, req.body);
   //product.name = req.body.name;
   res.redirect('/products');
 });
-/*
+*/
+
+
 router.put('/:id/edit', (req, res) => {
   let productId = parseInt (req.params.id);
+  console.log('productId:', productId);
   let editThis = products.editProduct(productId, req.body);
-  console.log(editThis);
+  console.log("editThis", editThis);
   let productsObj = {products: products.getProductById(productId)};
   res.render('partials/product', productsObj);
-});*/
+});
 
 
 

@@ -79,7 +79,13 @@ class Products {
     return selectedProd;
   }
 
-
+  editProduct(id, data){
+    let selectedProd = this.getAllProducts(id);
+    selectedProd.Name = data.Name;
+    selectedProd.Price = data.Price;
+    selectedProd.Inventory = data.Inventory;
+    return selectedProd;
+  }
   deleteProduct(getId){
     for(let i=0; i<this._collection.length; i++){
       if(this._collection[i].id === getId){
