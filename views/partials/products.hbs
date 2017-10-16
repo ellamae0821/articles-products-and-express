@@ -1,0 +1,21 @@
+<h2>LIST OF ALL PRODUCTS</h2>
+
+<a href= "products/new">
+  <button class="submit-btn" type="submit">Add a product</button>
+</a>
+{{#each products}}
+  <div class = "products">
+  <h3>Name: {{Name}}</h3>
+    <ul>
+      <li>ID #: {{id}}</li>
+      <li>Price:{{Price}}</li>
+      <li>Inventory: {{Inventory}}</li>
+    </ul>
+    <a href= "products/{{this.id}}/edit">
+    <button class="submit-btn" type="Edit">Edit Product</button>
+    </a><span>
+    <a href= "products/">
+    <button class="submit-btn" type="Delete">Delete Product</button>
+    </a>
+  </div>
+{{/each}}
