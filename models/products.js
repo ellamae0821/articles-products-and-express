@@ -1,6 +1,4 @@
 /*jshint esversion: 6*/
-//DATABASE
-
 const pgp = require('pg-promise')();
 /*const cn = {
     host: 'localhost',
@@ -16,7 +14,7 @@ const db = pgp('postgress://localhost:5432/articles_products');
 
 class Products {
 
-  addProduct (product){
+  addProduct(product){
     let name = product.name;
     let price = product.price;
     let inventory = product.inventory;
@@ -25,7 +23,7 @@ class Products {
       throw new Error ('Invalid Product');
     }
 
-    let query = 'INSERT INTO products VALUES ($1, $2, $3)';
+    let query = 'INSERT INTO products (name, price, inventory) VALUES ($1, $2, $3)';
     let params = [name, price, inventory];
     return db.any(query, params);
   }
@@ -33,7 +31,6 @@ class Products {
   getAllProd () {
     return db.any('SELECT * FROM products');
   }
-
 
 
 

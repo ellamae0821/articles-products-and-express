@@ -1,21 +1,38 @@
 /*jshint esversion: 6*/
-debugger;
+
 const express = require('express');
 const Products = require('../models/products.js');
 const router = express.Router();
-console.log(Products);
 const products = new Products();
 
-
+//////////////// GET ALL PRODUCTS \\\\\\\\\\\\\\\\\\
 router.get('/', (req, res) => {
-  console.log('hello');
+  console.log("RUNNING: router.get ('/products') ");
   return products.getAllProd()
   .then( (data) => {
-    console.log(data);
-//    res.render('/partials/products', {products:data});
-    res.json(data);
+    res.render('partials/products', {products:data});
   });
 });
+
+
+//////////////// POST A NEW PRODUCT \\\\\\\\\\\\\\\\\\
+
+router.get('/new', (req, res) => {
+  console.log("RUNNING: router.get('/new')");
+  res.render('partials/product_new');
+});
+
+router.post('/', (req, res) => {
+console.log('RUNNING: router.post (/)');
+  return products.addProduct(req.body)
+  .then( (data) => {
+    res.redirect('/products');
+  })
+  .catch( (error) => {
+    res.render('partials/product_new');
+  });
+});
+
 
 
 
@@ -24,18 +41,3 @@ router.get('/', (req, res) => {
 module.exports = router;
 
 
-// router.route('/')
-// .get((req, res) => {
-// prodFuncs.getAllProd(req, res);
-// });
-
-
-// const getAllProd = (req, res) => {
-// Products.getInventory()
-// .then(prodArray => {
-// res.render('productViews/allProducts', {products: prodArray});
-// })
-// .catch(error => {
-// res.render('productViews/allProducts', {products: prodArray});
-// });
-// };
