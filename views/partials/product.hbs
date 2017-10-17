@@ -1,0 +1,27 @@
+<div class = "itemlist">
+<h3>Selected Item</h3>
+
+<em>Product ID: {{id}}</em>
+
+<ul>
+  <li> Name: {{name}}</li>
+  <li> Price: {{price}}</li>
+  <li> Inventory: {{inventory}}</li>
+
+</ul>
+
+
+</div>
+
+<div class ="btn">
+
+  <a href= "/partials/{{id}}/edit">
+  <button class="submit-btn" type="submit">Edit Product</button>
+  </a>
+
+<form action="/products/{{id}}?_method=DELETE" method="POST">
+<input type="submit" value = "Delete Product">
+</form>
+
+
+</div>

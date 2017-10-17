@@ -23,7 +23,7 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-console.log('RUNNING: router.post (/)');
+  console.log('RUNNING: router.post (/)');
   return products.addProduct(req.body)
   .then( (data) => {
     res.redirect('/products');
@@ -31,6 +31,41 @@ console.log('RUNNING: router.post (/)');
   .catch( (error) => {
     res.render('partials/product_new');
   });
+});
+
+//////////////// FIND A PRODUCT BY ID \\\\\\\\\\\\\\\\\\
+
+router.get('/:id', (req, res) => {
+  let productId = parseInt(req.params.id);
+  return products.getByID(productId)
+  .then (data => {
+    res.render('partials/product', data[0]);
+//    console.log('rendering:' , data);
+  })
+  .catch(() => {
+    res.redirect('/products');
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  let productId = parseInt(req.params.id);
+  return products.removeProd(productId)
+  .then((data) => {
+    res.redirect('/products');
+    console.log("PLEASE DELETE:", data);
+  })
+  .catch (() => {
+    res.redirect(`/products/${productId}`);
+  });
+});
+
+
+
+//////////////// DELETE PRODUCT \\\\\\\\\\\\\\\\\\
+
+router.get('/:id/edit', (req, res) => {
+  let productId = parseInt(req.params.id);
+  res.redirect(`/products/${productId}`);
 });
 
 

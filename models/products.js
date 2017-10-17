@@ -32,9 +32,16 @@ class Products {
     return db.any('SELECT * FROM products');
   }
 
+  getByID(id) {
+    return db.any('SELECT * FROM products WHERE id = $1', [id]);
+  }
+
+  removeProd(id) {
+    return db.any('DELETE FROM products WHERE id = $1', [id]);
+  }
+
 
 
 
 }
 module.exports = Products;
-//module.exports = new Products ();
