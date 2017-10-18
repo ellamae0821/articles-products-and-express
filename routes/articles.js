@@ -48,29 +48,30 @@ router.get('/:url', (req, res) => {
   });
 });
 
-
-/*router.put('/:id', (req, res) => {
-  let productId = parseInt(req.params.id);
-  let productBody = req.body;
-  console.log("BEFORE RETURN at put");
-  return products.editProd(productId, productBody)
+//////////////// EDIT AN ARTICLE \\\\\\\\\\\\\\\\\\
+router.put('/:url', (req, res) => {
+  let artUrl = req.params.url;
+  let artBody = req.body;
+  console.log("body check", artBody);
+  return articles.editArt(artUrl, artBody)
   .then ((data) => {
     console.log("CAN EDIT?:");
 //    return data;
 //    res.render(`partials/product/${productId}`);
-    res.redirect('/products');
+    res.redirect('/articles');
   })
-  .catch( () => {
-    res.redirect(`/products/${productId}`);
+  .catch( (err) => {
+    console.log(err);
+//    res.redirect(`/articles/${artUrl}`);
   });
-});*/
+});
 
 //////////////// DELETE ARTICLE \\\\\\\\\\\\\\\\\\
-/*
-router.get('/:id/edit', (req, res) => {
-  let productId = parseInt(req.params.id);
-  res.redirect(`/products/${productId}`);
-});*/
+
+router.get('/:url/edit', (req, res) => {
+  let artUrl = req.params.url;
+  res.redirect(`/articles/${artUrl}`);
+});
 
 router.delete('/:url', (req, res) => {
   let artUrl = req.params.url;

@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-
+//////////////// EDIT A PRODUCT \\\\\\\\\\\\\\\\\\
 router.put('/:id', (req, res) => {
   let productId = parseInt(req.params.id);
   let productBody = req.body;
@@ -84,7 +84,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-//////////////// EDIT A PRODUCT \\\\\\\\\\\\\\\\\\
+
 
 
 

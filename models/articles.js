@@ -40,10 +40,11 @@ class Articles {
     return db.any('DELETE FROM articles WHERE title = $1', [title]);
   }
 
-/*
-  editProd(id, product) {
-    return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);
-*/
+
+  editArt(title, article) {
+    return db.any('UPDATE articles SET title = $1, body = $2, author = $3 WHERE title = $4', [article.title, article.body, article.author, title]);
+
   }
+}
 
 module.exports = Articles;

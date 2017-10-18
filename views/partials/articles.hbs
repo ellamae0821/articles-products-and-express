@@ -5,12 +5,13 @@
 </a>
 {{#each articles}}
   <div class = "products">
-  <h3>Name: {{title}}</h3>
+  <h3>Title: {{title}}</h3>
     <ul>
-      <li>Price:{{body}}</li>
-      <li>Inventory: {{author}}</li>
+      <li>Author: {{author}}</li>
+      {{body}}
+
     </ul>
-    <a href= "products/{{title}}/edit">
+    <a href= "articles/{{title}}/edit">
     <button class="submit-btn" type="Edit">Edit Article</button>
     </a><span>
   </div>
