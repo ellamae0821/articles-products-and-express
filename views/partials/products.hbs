@@ -1,7 +1,7 @@
 <h2>LIST OF ALL PRODUCTS</h2>
 
 <a href= "products/new">
-  <button class="submit-btn" type="submit">Add a product</button>
+  <button class="myButton" type="submit">Add a product</button>
 </a>
 {{#each products}}
   <div class = "products">
@@ -12,7 +12,7 @@
       <li>Inventory: {{inventory}}</li>
     </ul>
     <a href= "products/{{id}}/edit">
-    <button class="submit-btn" type="Edit">Edit Product</button>
+    <button class="myButton" type="Edit">Edit Product</button>
     </a><span>
   </div>
 {{/each}}
