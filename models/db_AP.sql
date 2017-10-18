@@ -29,9 +29,8 @@ INSERT INTO products VALUES
 
 DROP TABLE IF EXISTS articles;
 CREATE TABLE articles (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR (100),
-  body VARCHAR,
+  title VARCHAR PRIMARY KEY,
+  body VARCHAR (1000),
   author VARCHAR
 );
 

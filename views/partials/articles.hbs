@@ -1,0 +1,17 @@
+<h2>LIST OF ALL ARTICLES</h2>
+
+<a href= "articles/new">
+  <button class="submit-btn" type="submit">Add an article</button>
+</a>
+{{#each articles}}
+  <div class = "products">
+  <h3>Name: {{title}}</h3>
+    <ul>
+      <li>Price:{{body}}</li>
+      <li>Inventory: {{author}}</li>
+    </ul>
+    <a href= "products/{{title}}/edit">
+    <button class="submit-btn" type="Edit">Edit Article</button>
+    </a><span>
+  </div>
+{{/each}}

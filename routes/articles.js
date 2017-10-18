@@ -1,41 +1,41 @@
 /*jshint esversion: 6*/
 
 const express = require('express');
-const Products = require('../models/products.js');
+const Articles = require('../models/articles.js');
 const router = express.Router();
-const products = new Products();
-/*
-//////////////// GET ALL PRODUCTS \\\\\\\\\\\\\\\\\\
+const articles = new Articles();
+
+//////////////// GET ALL ARTICLE \\\\\\\\\\\\\\\\\\
 router.get('/', (req, res) => {
-  console.log("RUNNING: router.get ('/products') ");
-  return products.getAllProd()
+  console.log("RUNNING: router.get ('/articles') ");
+  return articles.getAllArt()
   .then( (data) => {
-    res.render('partials/products', {products:data});
+    res.render('partials/articles', {articles:data});
   });
 });
 
 
-//////////////// POST A NEW PRODUCT \\\\\\\\\\\\\\\\\\
+//////////////// POST A NEW ARTICLE \\\\\\\\\\\\\\\\\\
 
 router.get('/new', (req, res) => {
   console.log("RUNNING: router.get('/new')");
-  res.render('partials/product_new');
+  res.render('partials/article_new');
 });
 
 router.post('/', (req, res) => {
   console.log('RUNNING: router.post (/)');
-  return products.addProduct(req.body)
+  return articles.addArticle(req.body)
   .then( (data) => {
-    res.redirect('/products');
+    res.redirect('/articles');
   })
   .catch( (error) => {
-    res.render('partials/product_new');
+    res.render('partials/article_new');
   });
 });
 
-//////////////// FIND A PRODUCT BY ID \\\\\\\\\\\\\\\\\\
+//////////////// FIND A ARTICLE BY TITLE \\\\\\\\\\\\\\\\\\
 
-router.get('/:id', (req, res) => {
+/*router.get('/:id', (req, res) => {
   let productId = parseInt(req.params.id);
   return products.getByID(productId)
   .then (data => {
@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-//////////////// DELETE PRODUCT \\\\\\\\\\\\\\\\\\
+//////////////// DELETE ARTICLE \\\\\\\\\\\\\\\\\\
 
 router.get('/:id/edit', (req, res) => {
   let productId = parseInt(req.params.id);
@@ -84,7 +84,6 @@ router.delete('/:id', (req, res) => {
 });
 */
 
-//////////////// EDIT A PRODUCT \\\\\\\\\\\\\\\\\\
 
 
 

@@ -12,27 +12,27 @@ const pgp = require('pg-promise')();
 //const db = pgp('postgress://meloverarana@localhost:5432/articles_products');
 const db = pgp('postgress://localhost:5432/articles_products');
 
-/*class Products {
+class Articles {
 
-  addProduct(product){
-    let name = product.name;
-    let price = product.price;
-    let inventory = product.inventory;
+  addArticle(article){
+    let title = article.title;
+    let body = article.body;
+    let author = article.author;
 
-    if (!name || !price || !inventory) {
+    if (!title || !body || !author) {
       throw new Error ('Invalid Product');
     }
 
-    let query = 'INSERT INTO products (name, price, inventory) VALUES ($1, $2, $3)';
-    let params = [name, price, inventory];
+    let query = 'INSERT INTO articles (title, body, author) VALUES ($1, $2, $3)';
+    let params = [title, body, author];
     return db.any(query, params);
   }
 
-  getAllProd () {
-    return db.any('SELECT * FROM products');
+  getAllArt () {
+    return db.any('SELECT * FROM articles');
   }
 
-  getByID(id) {
+/*  getByID(id) {
     return db.any('SELECT * FROM products WHERE id = $1', [id]);
   }
 
@@ -42,8 +42,8 @@ const db = pgp('postgress://localhost:5432/articles_products');
 
 
   editProd(id, product) {
-    return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);
-    }
-  }*/
+    return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);*/
+
+  }
 
 module.exports = Articles;
