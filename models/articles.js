@@ -32,18 +32,18 @@ class Articles {
     return db.any('SELECT * FROM articles');
   }
 
-/*  getByID(id) {
-    return db.any('SELECT * FROM products WHERE id = $1', [id]);
+  getByTitle(title) {
+    return db.any('SELECT * FROM articles WHERE title = $1', [title]);
   }
 
-  removeProd(id) {
+/*  removeProd(id) {
     return db.any('DELETE FROM products WHERE id = $1', [id]);
   }
 
 
   editProd(id, product) {
-    return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);*/
-
+    return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);
+*/
   }
 
 module.exports = Articles;

@@ -35,19 +35,20 @@ router.post('/', (req, res) => {
 
 //////////////// FIND A ARTICLE BY TITLE \\\\\\\\\\\\\\\\\\
 
-/*router.get('/:id', (req, res) => {
-  let productId = parseInt(req.params.id);
-  return products.getByID(productId)
+router.get('/:url', (req, res) => {
+  let artUrl = req.params.url;
+  console.log('artTitle:', artUrl);
+  return articles.getByTitle(artUrl)
   .then (data => {
-    res.render('partials/product', data[0]);
+    res.render('partials/article', data[0]);
 //    console.log('rendering:' , data);
   })
   .catch(() => {
-    res.redirect('/products');
+    res.redirect('/articles');
   });
 });
 
-
+/*
 router.put('/:id', (req, res) => {
   let productId = parseInt(req.params.id);
   let productBody = req.body;
