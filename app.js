@@ -3,7 +3,7 @@ const express = require('express');
 const exphbs = require ('express-handlebars');
 const bodyParser = require('body-parser');
 const methodOverride = require ('method-override');
-//const articlesRoute = require('./routes/articles.js');
+const articlesRoute = require('./routes/articles.js');
 const productsRoute = require('./routes/products.js');
 const PORT = process.env.PORT|| 8080;
 const app = express();
@@ -22,7 +22,7 @@ app.get('/', (req, res) =>{
   res.render ('index');
 });
 
-//app.use('/articles', articleRoute);
+app.use('/articles', articlesRoute);
 app.use('/products', productsRoute);
 
 app.listen(PORT, () =>{

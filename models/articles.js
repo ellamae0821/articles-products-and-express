@@ -12,7 +12,7 @@ const pgp = require('pg-promise')();
 //const db = pgp('postgress://meloverarana@localhost:5432/articles_products');
 const db = pgp('postgress://localhost:5432/articles_products');
 
-class Products {
+/*class Products {
 
   addProduct(product){
     let name = product.name;
@@ -44,19 +44,6 @@ class Products {
   editProd(id, product) {
     return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);
     }
-  }
+  }*/
 
-module.exports = Products;
-/*
-edit(id, object){
-return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [object.name, object.price, object.inventory, id])
-.then((data) => {
-return data;
-})
-.catch((err) => {
-console.log(err);
-});
-}
-
-
-*/
+module.exports = Articles;

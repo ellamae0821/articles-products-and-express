@@ -4,7 +4,7 @@ const express = require('express');
 const Products = require('../models/products.js');
 const router = express.Router();
 const products = new Products();
-
+/*
 //////////////// GET ALL PRODUCTS \\\\\\\\\\\\\\\\\\
 router.get('/', (req, res) => {
   console.log("RUNNING: router.get ('/products') ");
@@ -82,7 +82,7 @@ router.delete('/:id', (req, res) => {
     res.redirect(`/products/${productId}`);
   });
 });
-
+*/
 
 //////////////// EDIT A PRODUCT \\\\\\\\\\\\\\\\\\
 
