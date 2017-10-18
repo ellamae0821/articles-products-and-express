@@ -36,11 +36,11 @@ class Articles {
     return db.any('SELECT * FROM articles WHERE title = $1', [title]);
   }
 
-/*  removeProd(id) {
-    return db.any('DELETE FROM products WHERE id = $1', [id]);
+  removeArt(title) {
+    return db.any('DELETE FROM articles WHERE title = $1', [title]);
   }
 
-
+/*
   editProd(id, product) {
     return db.any('UPDATE products SET name = $1, price = $2, inventory = $3 WHERE id = $4', [product.name, product.price, product.inventory, id]);
 */

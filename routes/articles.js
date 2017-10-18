@@ -48,8 +48,8 @@ router.get('/:url', (req, res) => {
   });
 });
 
-/*
-router.put('/:id', (req, res) => {
+
+/*router.put('/:id', (req, res) => {
   let productId = parseInt(req.params.id);
   let productBody = req.body;
   console.log("BEFORE RETURN at put");
@@ -63,27 +63,27 @@ router.put('/:id', (req, res) => {
   .catch( () => {
     res.redirect(`/products/${productId}`);
   });
-});
+});*/
 
 //////////////// DELETE ARTICLE \\\\\\\\\\\\\\\\\\
-
+/*
 router.get('/:id/edit', (req, res) => {
   let productId = parseInt(req.params.id);
   res.redirect(`/products/${productId}`);
-});
+});*/
 
-router.delete('/:id', (req, res) => {
-  let productId = parseInt(req.params.id);
-  return products.removeProd(productId)
+router.delete('/:url', (req, res) => {
+  let artUrl = req.params.url;
+  return articles.removeArt(artUrl)
   .then((data) => {
-    res.redirect('/products');
+    res.redirect('/articles');
     console.log("PLEASE DELETE:", data);
   })
   .catch (() => {
-    res.redirect(`/products/${productId}`);
+    res.redirect(`/articles/${artUrl}`);
   });
 });
-*/
+
 
 
 
